@@ -11,3 +11,8 @@
 - Hitboxes för vägar och kanter
 - Nätverk (Server/Client)
 - Hitbox för skott
+- Skott studsar x antal ggr på väggar
+- Motståndare expolederar/dör
+## Om tid finns
+- Poäng 
+- special packet 
