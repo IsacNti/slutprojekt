@@ -38,6 +38,8 @@ public class grafik extends Canvas implements Runnable {
     int y = 300;
     int vx = 1;
     int vy = 1;
+    int vvx = 0;
+    int vvy = 0;
     int sunX = 700;
     int sunY = 100;
     int amogX = 0;
@@ -48,6 +50,8 @@ public class grafik extends Canvas implements Runnable {
     int starY = 40;
     int xx = 20;
     int yy = 20;
+    int xxx = 10;
+    int yyy = 10;
     int dead = 0;
     int hälsa = 5;
     int random = 60;
@@ -57,6 +61,7 @@ public class grafik extends Canvas implements Runnable {
 
     private BufferedImage spriteimg;
     private BufferedImage spriteimg1;
+    private BufferedImage tank1;
 
 
 
@@ -85,6 +90,8 @@ public class grafik extends Canvas implements Runnable {
             spriteimg1 = ImageIO.read(getClass().getResource("filename1.png"));
 
             spriteimg = ImageIO.read(getClass().getResource("filename.png"));
+
+            tank1 = ImageIO.read(getClass().getResource("tank.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -175,6 +182,15 @@ public class grafik extends Canvas implements Runnable {
             vx = -vx;
         if (y <= 0 || y >= height - 4 * spriteimg.getHeight())
             vy = -vy;
+
+        xx += vvx;
+        yy += vvy;
+
+        if (xx <= 0 || xx >= width - 3 * tank1.getWidth())
+            vvx = 0;
+        if (yy <= 0 || yy >= height - 3 * tank1.getHeight())
+            vvy = 0;
+
     }
 
     private void drawSun(Graphics g, int sunX, int sunY) {
@@ -222,6 +238,7 @@ public class grafik extends Canvas implements Runnable {
         else {
             g.drawImage(spriteimg, x, y, 4*spriteimg.getWidth(), 4* spriteimg.getHeight(),null);
         }
+        g.drawImage(tank1, xx, yy, 3*tank1.getWidth(), 3* tank1.getHeight(),null);
         Amogus(g,amogX-15,amogY-15);
         Amogus(g,amogX-15,amogY-5);
         Amogus(g,amogX-15,amogY+15);
@@ -260,12 +277,42 @@ public class grafik extends Canvas implements Runnable {
 
         @Override
         public void keyPressed(KeyEvent keyEvent) {
-
+            if (keyEvent.getKeyChar()=='a'){
+                System.out.println("a");
+                vvx = -5;
+            }
+            if (keyEvent.getKeyChar()=='d'){
+                System.out.println("d");
+                vvx = 5;
+            }
+            if (keyEvent.getKeyChar()=='w'){
+                System.out.println("w");
+                vvy = -5;
+            }
+            if (keyEvent.getKeyChar()=='s'){
+                System.out.println("s");
+                vvy = 5;
+            }
         }
 
         @Override
         public void keyReleased(KeyEvent keyEvent) {
-
+            if (keyEvent.getKeyChar()=='a'){
+                System.out.println("a");
+                vvx = 0;
+            }
+            if (keyEvent.getKeyChar()=='d'){
+                System.out.println("d");
+                vvx = 0;
+            }
+            if (keyEvent.getKeyChar()=='w'){
+                System.out.println("w");
+                vvy = 0;
+            }
+            if (keyEvent.getKeyChar()=='s'){
+                System.out.println("s");
+                vvy = 0;
+            }
         }
     }
 
