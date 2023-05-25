@@ -58,10 +58,25 @@ public class grafik extends Canvas implements Runnable {
     int radnomtal = 0;
     int min = -10;
     int max = 10;
+    int shot = 0;
+    int bx = 2;
+    int by = 2;
+    int bx1 = 2;
+    int by1 = 2;
+    int bx2 = 2;
+    int by2 = 2;
+    int bxx = 12;
+    int byy = -10;
+    int bxv = 0;
+    int byv = -7;
+    int time = 0;
+    int time1 = 0;
+    int time2 = 0;
 
     private BufferedImage spriteimg;
     private BufferedImage spriteimg1;
     private BufferedImage tank1;
+    private BufferedImage tank2;
 
 
 
@@ -92,6 +107,9 @@ public class grafik extends Canvas implements Runnable {
             spriteimg = ImageIO.read(getClass().getResource("filename.png"));
 
             tank1 = ImageIO.read(getClass().getResource("tank.png"));
+
+            tank2 = ImageIO.read(getClass().getResource("tank2.png"));
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -135,6 +153,9 @@ public class grafik extends Canvas implements Runnable {
             long now = System.currentTimeMillis();
             if (now - lastTime > deltaT) {
                 update();
+                time = time +1;
+                time1 = time1 +1;
+                time2 = time2 +1;
                 lastTime = now;
             }
             paint();
@@ -183,13 +204,36 @@ public class grafik extends Canvas implements Runnable {
         if (y <= 0 || y >= height - 4 * spriteimg.getHeight())
             vy = -vy;
 
-        xx += vvx;
-        yy += vvy;
-
         if (xx <= 0 || xx >= width - 3 * tank1.getWidth())
             vvx = 0;
         if (yy <= 0 || yy >= height - 3 * tank1.getHeight())
             vvy = 0;
+
+        if (xx <= 0){
+            xx = 1;
+        }
+        if (767 <= xx){
+            xx = 766;
+        }
+        if (yy <= 0){
+            yy = 1;
+        }
+        if (549 <= yy){
+            yy = 548;
+        }
+
+        xx += vvx;
+        yy += vvy;
+
+        bx += bxv;
+        by += byv;
+
+        bx1 += bxv;
+        by1 += byv;
+
+        bx2 += bxv;
+        by2 += byv;
+
 
     }
 
@@ -222,6 +266,18 @@ public class grafik extends Canvas implements Runnable {
         g.setColor(new Color(0xFF1F1F1F, true));
         g.fillRect(0,0,width,height);
     }
+    private void Boom(Graphics g, int dx, int dy) {
+        g.setColor(Color.yellow);
+        g.fillRect(dx,dy,9,9);
+    }
+    private void Boom1(Graphics g, int dx1, int dy1) {
+        g.setColor(Color.yellow);
+        g.fillRect(dx1,dy1,9,9);
+    }
+    private void Boom2(Graphics g, int dx2, int dy2) {
+        g.setColor(Color.yellow);
+        g.fillRect(dx2,dy2,9,9);
+    }
     /**
      * Rita ut alla saker. Ordningen är viktig eftersom vi kan rita saker på andra saker.
      *
@@ -233,12 +289,13 @@ public class grafik extends Canvas implements Runnable {
         star(g,starX,starY);
         drawSun(g, sunX, sunY);
         if (Objects.equals(dead, hälsa)){
-            g.drawImage(spriteimg1, x, y, 4*spriteimg.getWidth(), 4* spriteimg.getHeight(),null);
+            g.drawImage(spriteimg1, x, y, 4*spriteimg1.getWidth(), 4* spriteimg1.getHeight(),null);
         }
         else {
             g.drawImage(spriteimg, x, y, 4*spriteimg.getWidth(), 4* spriteimg.getHeight(),null);
         }
         g.drawImage(tank1, xx, yy, 3*tank1.getWidth(), 3* tank1.getHeight(),null);
+        g.drawImage(tank2, x,y, 3*tank2.getWidth(),3* tank2.getHeight(),null);
         Amogus(g,amogX-15,amogY-15);
         Amogus(g,amogX-15,amogY-5);
         Amogus(g,amogX-15,amogY+15);
@@ -251,6 +308,22 @@ public class grafik extends Canvas implements Runnable {
         Amogus(g,amogX+11,amogY-15);
         Amogus(g,amogX-21,amogY-5);
         Visir(g,visirX-3,visirY-10);
+        if (time >= 0){
+            if (time <= 80){
+                Boom(g,bx,by);
+            }
+        }
+        if (time1 >= 0){
+            if (time1 <= 80){
+                Boom1(g,bx1,by1);
+            }
+        }
+        if (time2 >= 0){
+            if (time2 <= 80){
+                Boom2(g,bx2,by2);
+            }
+        }
+
     }
 
     /**
@@ -293,6 +366,25 @@ public class grafik extends Canvas implements Runnable {
                 System.out.println("s");
                 vvy = 5;
             }
+            if (keyEvent.getKeyChar()=='k'){
+                System.out.println("k");
+                shot = shot + 1;
+                if (shot == 1){
+                    bx = bxx + xx;
+                    by = byy + yy;
+                    time = 1;
+                }
+                if (shot == 2){
+                    bx1 = bxx + xx;
+                    by1 = byy + yy;
+                    time1 = 1;
+                }
+                if (shot == 20){
+                    bx2 = bxx + xx;
+                    by2 = byy + yy;
+                    time2 = 1;
+                }
+            }
         }
 
         @Override
@@ -312,6 +404,10 @@ public class grafik extends Canvas implements Runnable {
             if (keyEvent.getKeyChar()=='s'){
                 System.out.println("s");
                 vvy = 0;
+            }
+            if (keyEvent.getKeyChar()=='k'){
+                System.out.println("k");
+                shot = 0;
             }
         }
     }
