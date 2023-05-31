@@ -9,7 +9,7 @@
 - Styrning med piltangenter 
 - Klicka space för att skjuta ditt du tittar 
 - Hitboxes för vägar och kanter
-- Nätverk (Server/Client)
+- Nätverk (Server.Server/Client.Client)
 - Hitbox för skott
 - Skott studsar x antal ggr på väggar
 - Motståndare expolederar/dör
