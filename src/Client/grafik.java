@@ -8,7 +8,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
-
+import java.util.Scanner;
 /**
  * Enkel grafik. Skapa en Canvas men skriv en egen metod för att anropa ritandet. För att kunna styra fps och ups
  * lägger vi den i egen tråd
@@ -32,6 +32,10 @@ public class grafik extends Canvas implements Runnable {
     private final int height = 600;
     private final int width = 800;
     // Variabler gör det lättare att placera saker
+
+    //Skicka värden
+    int mxxx = 10;
+    int myyy = 10;
 
     // värdens mitt
     int x = 400;
@@ -58,15 +62,15 @@ public class grafik extends Canvas implements Runnable {
     int shot = 0;
 
     //spelar 1
-    int bx = 2;
-    int by = 2;
-    int bx1 = 2;
-    int by1 = 2;
-    int bx2 = 2;
-    int by2 = 2;
-    int time = 0;
-    int time1 = 0;
-    int time2 = 0;
+    public int bx = 2;
+    public int by = 2;
+    public int bx1 = 2;
+    public int by1 = 2;
+    public int bx2 = 2;
+    public int by2 = 2;
+    public int time = 0;
+    public int time1 = 0;
+    public int time2 = 0;
 
     //spelar 2
     int ax = 2;
@@ -83,10 +87,11 @@ public class grafik extends Canvas implements Runnable {
     int atime1 = 0;
     int atime2 = 0;
 
+    public int msa;
+
 
     private BufferedImage tank1;
     private BufferedImage tank2;
-
 
 
     /**
@@ -225,9 +230,8 @@ public class grafik extends Canvas implements Runnable {
 
         ax2 += axv;
         ay2 += ayv;
-
-
     }
+
 
 
     /**
@@ -252,6 +256,18 @@ public class grafik extends Canvas implements Runnable {
         g.fillRect(dx1,dy1,9,9);
     }
     private void Boom2(Graphics g, int dx2, int dy2) {
+        g.setColor(Color.yellow);
+        g.fillRect(dx2,dy2,9,9);
+    }
+    private void aBoom(Graphics g, int dx, int dy) {
+        g.setColor(Color.yellow);
+        g.fillRect(dx,dy,9,9);
+    }
+    private void aBoom1(Graphics g, int dx1, int dy1) {
+        g.setColor(Color.yellow);
+        g.fillRect(dx1,dy1,9,9);
+    }
+    private void aBoom2(Graphics g, int dx2, int dy2) {
         g.setColor(Color.yellow);
         g.fillRect(dx2,dy2,9,9);
     }
@@ -284,17 +300,17 @@ public class grafik extends Canvas implements Runnable {
         }
         if (atime >= 0){
             if (atime <= 80){
-                Boom(g,ax,ay);
+                aBoom(g,ax,ay);
             }
         }
         if (atime1 >= 0){
             if (atime1 <= 80){
-                Boom1(g,ax1,ay1);
+                aBoom1(g,ax1,ay1);
             }
         }
         if (atime2 >= 0){
             if (atime2 <= 80){
-                Boom2(g,ax2,ay2);
+                aBoom2(g,ax2,ay2);
             }
         }
 
@@ -318,30 +334,25 @@ public class grafik extends Canvas implements Runnable {
         @Override
         public void keyTyped(KeyEvent keyEvent) {
             if (keyEvent.getKeyChar() == 'a') {
-                System.out.print("a");
+
             }
         }
 
         @Override
         public void keyPressed(KeyEvent keyEvent) {
             if (keyEvent.getKeyChar()=='a'){
-                System.out.println("a");
                 vvx = -5;
             }
             if (keyEvent.getKeyChar()=='d'){
-                System.out.println("d");
                 vvx = 5;
             }
             if (keyEvent.getKeyChar()=='w'){
-                System.out.println("w");
                 vvy = -5;
             }
             if (keyEvent.getKeyChar()=='s'){
-                System.out.println("s");
                 vvy = 5;
             }
             if (keyEvent.getKeyChar()=='k'){
-                System.out.println("k");
                 shot = shot + 1;
                 if (shot == 1){
                     ax = axx + xxx;
@@ -364,23 +375,18 @@ public class grafik extends Canvas implements Runnable {
         @Override
         public void keyReleased(KeyEvent keyEvent) {
             if (keyEvent.getKeyChar()=='a'){
-                System.out.println("a");
                 vvx = 0;
             }
             if (keyEvent.getKeyChar()=='d'){
-                System.out.println("d");
                 vvx = 0;
             }
             if (keyEvent.getKeyChar()=='w'){
-                System.out.println("w");
                 vvy = 0;
             }
             if (keyEvent.getKeyChar()=='s'){
-                System.out.println("s");
                 vvy = 0;
             }
             if (keyEvent.getKeyChar()=='k'){
-                System.out.println("k");
                 shot = 0;
             }
         }

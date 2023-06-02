@@ -9,9 +9,20 @@ import java.util.Scanner;
 
 public class Client {
     Socket socket;
-
     PrintWriter out;
     BufferedReader in;
+    int mxxx = 10;
+    int myyy = 10;
+
+    public int max = 2;
+    public int may = 2;
+    public int max1 = 2;
+    public int may1 = 2;
+    public int max2 = 2;
+    public int may2 = 2;
+    public int matime = 0;
+    public int matime1 = 0;
+    public int matime2 = 0;
 
     public Client(String ip, int port) {
         try {
@@ -27,6 +38,7 @@ public class Client {
 
     }
 
+
     public void getStreams() {
         try {
             out = new PrintWriter(socket.getOutputStream(), true);
@@ -37,14 +49,80 @@ public class Client {
         System.out.println("Streams ready...");
     }
 
-    public void runProtocol() {
+    public void runProtocol(grafik g) {
         Scanner tgb = new Scanner(System.in);
         System.out.println("chatting...");
-        String msg = "";
-        while (!msg.equals("QUIT")) {
-            msg = tgb.nextLine();
-            out.println("CLIENT: " + msg);
+        while (true) {
+            if (max == g.ax) {
+                out.println(g.ax);
+            }
+            else{
+                max = g.ax;
+                out.println("CLIENT: " + max);
+            }
+            if (max1 == g.ax1) {
+            }
+            else{
+                max1 = g.ax1;
+                out.println("CLIENT: " + max1);
+            }
+            if (max2 == g.ax2) {
+            }
+            else{
+                max2 = g.ax2;
+                out.println("CLIENT: " + max2);
+            }
+            if (may == g.ay) {
+            }
+            else{
+                may = g.ay;
+                out.println("CLIENT: " + may);
+            }
+            if (may1 == g.ay1) {
+            }
+            else{
+                may1 = g.ay1;
+                out.println("CLIENT: " + may1);
+            }
+            if (may2 == g.ay2) {
+            }
+            else{
+                may2 = g.ay2;
+                out.println("CLIENT: " + may2);
+            }
+            if (matime == g.atime){
+            }
+            else{
+                matime = g.atime;
+                out.println("CLIENT: " + matime);
+            }
+            if (matime1 == g.atime1){
+            }
+            else{
+                matime1 = g.atime1;
+                out.println("CLIENT: " + matime1);
+            }
+            if (matime2 == g.atime2){
+            }
+            else{
+                matime2 = g.atime2;
+                out.println("CLIENT: " + matime2);
+            }
+            if (mxxx == g.xxx){
+            }
+            else{
+                mxxx = g.xxx;
+                out.println("CLIENT: " + mxxx);
+
+            }
+            if (myyy == g.yyy){
+            }
+            else {
+                myyy = g.yyy;
+                out.println("CLIENT: " + myyy);
+            }
         }
+
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -53,7 +131,7 @@ public class Client {
         ListenerThread l = new ListenerThread(me.in, System.out);
         Thread listener = new Thread(l);
         listener.start();
-        me.runProtocol();
+
         listener.join();
         me.shutDown();
     }

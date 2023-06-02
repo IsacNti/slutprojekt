@@ -317,30 +317,24 @@ public class grafik extends Canvas implements Runnable {
         @Override
         public void keyTyped(KeyEvent keyEvent) {
             if (keyEvent.getKeyChar() == 'a') {
-                System.out.print("a");
             }
         }
 
         @Override
         public void keyPressed(KeyEvent keyEvent) {
             if (keyEvent.getKeyChar()=='a'){
-                System.out.println("a");
                 vvx = -5;
             }
             if (keyEvent.getKeyChar()=='d'){
-                System.out.println("d");
                 vvx = 5;
             }
             if (keyEvent.getKeyChar()=='w'){
-                System.out.println("w");
                 vvy = -5;
             }
             if (keyEvent.getKeyChar()=='s'){
-                System.out.println("s");
                 vvy = 5;
             }
             if (keyEvent.getKeyChar()=='k'){
-                System.out.println("k");
                 shot = shot + 1;
                 if (shot == 1){
                     bx = bxx + xx;
@@ -363,23 +357,18 @@ public class grafik extends Canvas implements Runnable {
         @Override
         public void keyReleased(KeyEvent keyEvent) {
             if (keyEvent.getKeyChar()=='a'){
-                System.out.println("a");
                 vvx = 0;
             }
             if (keyEvent.getKeyChar()=='d'){
-                System.out.println("d");
                 vvx = 0;
             }
             if (keyEvent.getKeyChar()=='w'){
-                System.out.println("w");
                 vvy = 0;
             }
             if (keyEvent.getKeyChar()=='s'){
-                System.out.println("s");
                 vvy = 0;
             }
             if (keyEvent.getKeyChar()=='k'){
-                System.out.println("k");
                 shot = 0;
             }
         }

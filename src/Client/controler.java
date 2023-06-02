@@ -2,12 +2,9 @@ package Client;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class controler extends JFrame {
-
     Client Client;
     grafik grafik;
     public String ip;
@@ -27,15 +24,15 @@ public class controler extends JFrame {
             }
         });
         exempel.start();
-        me.runProtocol();
+        me.runProtocol(g);
         listener.join();
         me.shutDown();
 
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        Client m = new Client();
         grafik g = new grafik();
+        Client m = new Client();
         controler thisIsTheProgram = new controler(m,g);
         thisIsTheProgram.setVisible(true);
 
