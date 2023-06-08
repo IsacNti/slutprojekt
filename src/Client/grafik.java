@@ -195,6 +195,96 @@ public class grafik extends Canvas implements Runnable {
         bs.show();
     }
 
+
+
+    public int getXxx() {
+        return xxx;
+    }
+
+    public int getYyy() {
+        return yyy;
+    }
+
+    public int getAx() {
+        return ax;
+    }
+
+    public int getAy() {
+        return ay;
+    }
+
+    public int getAx1() {
+        return ax1;
+    }
+
+    public int getAy1() {
+        return ay1;
+    }
+
+    public int getAx2() {
+        return ax2;
+    }
+
+    public int getAy2() {
+        return ay2;
+    }
+
+    public int getAtime() {
+        return atime;
+    }
+
+    public int getAtime1() {
+        return atime1;
+    }
+
+    public int getAtime2() {
+        return atime2;
+    }
+
+    public void setXxx(int xxx) {
+        this.xxx = xxx;
+    }
+
+    public void setYyy(int yyy) {
+        this.yyy = yyy;
+    }
+
+    public void setAx(int ax) {
+        this.ax = ax;
+    }
+
+    public void setAy(int ay) {
+        this.ay = ay;
+    }
+
+    public void setAx1(int ax1) {
+        this.ax1 = ax1;
+    }
+
+    public void setAy1(int ay1) {
+        this.ay1 = ay1;
+    }
+
+    public void setAx2(int ax2) {
+        this.ax2 = ax2;
+    }
+
+    public void setAy2(int ay2) {
+        this.ay2 = ay2;
+    }
+
+    public void setAtime(int atime) {
+        this.atime = atime;
+    }
+
+    public void setAtime1(int atime1) {
+        this.atime1 = atime1;
+    }
+
+    public void setAtime2(int atime2) {
+        this.atime2 = atime2;
+    }
+
     /**
      * Ändra värdet på de variabler som styr animationerna
      */
@@ -230,6 +320,8 @@ public class grafik extends Canvas implements Runnable {
 
         ax2 += axv;
         ay2 += ayv;
+    setXxx(xxx);
+    setYyy(yyy);
     }
 
 

@@ -12,7 +12,8 @@ public class controler extends JFrame {
         this.Client = m;
         this.grafik = g;
         this.pack();
-        Client me = new Client("10.80.47.196",4202);
+        this.setVisible(true);
+        Client me = new Client("192.168.50.110",4202);
         me.getStreams();
         ListenerThread l = new ListenerThread(me.in, System.out);
         Thread listener = new Thread(l);

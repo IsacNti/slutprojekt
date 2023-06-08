@@ -54,7 +54,7 @@ public class Client {
         System.out.println("chatting...");
         while (true) {
             if (max == g.ax) {
-                out.println(g.ax);
+
             }
             else{
                 max = g.ax;
@@ -108,11 +108,12 @@ public class Client {
                 matime2 = g.atime2;
                 out.println("CLIENT: " + matime2);
             }
-            if (mxxx == g.xxx){
+            if (g.getXxx() != mxxx){
+
             }
             else{
-                mxxx = g.xxx;
-                out.println("CLIENT: " + mxxx);
+                mxxx = g.getXxx();
+                out.println("CLIENT: " + g.getXxx());
 
             }
             if (myyy == g.yyy){
